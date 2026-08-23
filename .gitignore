@@ -1,0 +1,18 @@
+# Local development files
+.venv/
+.vscode/
+*.code-workspace
+
+# Python-generated files
+__pycache__/
+*.py[codz]
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build and installation artifacts
+build/
+dist/
+*.egg-info/
