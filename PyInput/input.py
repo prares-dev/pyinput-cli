@@ -5,8 +5,9 @@ from typing import Any, Callable, Optional, Tuple
 
 @dataclass
 class Validator:
+    """ Generic object for reusable validation flow and harden input handling. """
     parser: Callable[[str], Any]
-    is_valid: Callable[[Any], Tuple[bool, Any]]
+    is_valid: Callable[[Any], Tuple[True, Any] | Tuple[False, str]]
     error_message: str = "Invalid input"
     max_attempts: Optional[int] = None
 
