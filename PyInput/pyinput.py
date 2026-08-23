@@ -1,13 +1,14 @@
 import math
 from dataclasses import dataclass
-from typing import Any, Callable, Optional, Tuple
+from typing import Any, Callable, Optional, Tuple, Literal
 
 
 @dataclass
 class Validator:
     """ Generic object for reusable validation flow and harden input handling. """
     parser: Callable[[str], Any]
-    is_valid: Callable[[Any], Tuple[True, Any] | Tuple[False, str]]
+    is_valid: Callable[ [Any], 
+                        Tuple[Literal[True], Any] | Tuple[Literal[False], str]]
     error_message: str = "Invalid input"
     max_attempts: Optional[int] = None
 
