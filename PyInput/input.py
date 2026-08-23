@@ -8,7 +8,8 @@ def get_str(prompt="Text: ", *, max_length=50, name=False):
     Anyway the max_length is validated
     """
     while True:
-        text = input(prompt).strip()
+        text = input(prompt)
+        text = " ".join(text.split())
         
         if len(text) > max_length:
             print(f"You exceeded the maximum length ({max_length}). Try Again.")
@@ -38,7 +39,6 @@ def get_num(prompt, *, min_val=None, max_val=None, floating=False):
         (min_val - max_val) if both are given
     If floating is True, it accepts floating point numbers, otherwise only integers.
     """
-    print(min_val, max_val)
     while True:
         text = input(prompt)
         try:
@@ -66,15 +66,3 @@ def yes_no(prompt):
             return False
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
-
-# ==================== MODULE'S TESTS ====================
-if __name__ == "__main__":
-    print(f"======== You are running the module \"input_handling\" directly ========")
-    print("This module is meant to be imported and used in other modules, but you can test it here.")
-    
-    # Example usage
-    name = get_str("Enter your name: ", name=True)
-    age = get_num("Enter your age: ", min_val=0, max_val=120)
-    salary = get_num("Enter your salary: ", min_val=0, floating=True)
-    is_married = yes_no("Are you married? ")
-    print(f"Name: {name}, Age: {age}, Salary: {salary}, {"Married" if is_married else "Single"}")
