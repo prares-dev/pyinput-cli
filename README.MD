@@ -1,6 +1,25 @@
 # PyInput-Input-Handler
 
-PyInput is a package that provides functions to handle user input in a consistent way across any project.
-- **get_str**: to get a string input from the user, with options to validate it as a name and limit its length.
-- **get_num**: to get a numeric input (integer or float) from the user, with options to set minimum and maximum values.
-- **yes_no**: to get a boolean input from the user, with options to validate it as a yes/no response.
+PyInput is a package that provides functions to handle user input in a consistent way across any project.z
+
+- **get_str**: reads a string and can validate its length or its format as a name.
+- **get_num**: reads an integer or float and validates minimum and maximum values.
+- **yes_no**: asks a yes/no question and returns the boolean result.
+
+## Example usage
+
+```python
+from PyInput import get_num, get_str, yes_no
+
+name = get_str("Name: ", name=True, max_length=30)
+age = get_num("Age: ", min_val=0, max_val=120)
+continue_ = yes_no("Continue?")
+
+print(name, age, continue_)
+```
+
+## Notes
+
+- Empty strings are rejected by default for `get_str`.
+- `get_num` rejects invalid input and values outside the configured bounds.
+- The functions are designed for small interactive CLI flows and can be reused in larger projects.
