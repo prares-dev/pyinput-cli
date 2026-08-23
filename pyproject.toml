@@ -3,25 +3,25 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "PyInput-input-handler"
+name = "pyinput-cli"
 version = "0.1.0"
-description = "A package for managing user input consistently across projects."
+description = "A package for managing user input through the cli, and consistently across projects."
 readme = "README.md"
 requires-python = ">=3.9"
-authors = [{name = "Pedro A. Rosquete Ares", email = "rosquetearespedro06@gmail.com"}]
+authors = [{name = "Pedro Alberto Rosquete Ares", email = "rosquetearespedro06@gmail.com"}]
 license = { file = "LICENSE" }
 dependencies = []
 
 [project.urls]
-Documentation = "https://github.com/prares-dev/PyInput-input-handler.git"
-Homepage = "https://github.com/prares-dev/PyInput-input-handler.git"
-Repository = "https://github.com/prares-dev/PyInput-input-handler.git"
+Documentation = "https://github.com/prares-dev/pyinput-cli.git"
+Homepage = "https://github.com/prares-dev/pyinput-cli.git"
+Repository = "https://github.com/prares-dev/pyinput-cli.git"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0",]
 
 [tool.setuptools.packages.find]
-include = ["PyInput*"]
+include = ["pyinput*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
