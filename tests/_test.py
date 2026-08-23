@@ -55,6 +55,15 @@ def test_get_str_with_name_true_and_max_length(monkeypatch, capsys):
         "You exceeded the maximum length (10). Try Again.\n"
     )
 
+
+def test_get_str_rejects_empty_input(monkeypatch, capsys):
+    responses = iter(["", "Jane Doe"])
+    monkeypatch.setattr("builtins.input", lambda _: next(responses))
+
+    assert get_str("Name: ") == "Jane Doe"
+    assert capsys.readouterr().out == "Input cannot be empty. Try Again.\n"
+
+
 def test_get_str_with_name_detects_invalid_chars(monkeypatch, capsys):
     responses = iter([
         "Pedro 234Alberto",
@@ -71,6 +80,14 @@ def test_get_str_with_name_detects_invalid_chars(monkeypatch, capsys):
         "Invalid characters detected, use only letters and whitespaces. Try Again.\n"
         "Invalid characters detected, use only letters and whitespaces. Try Again.\n"
     )
+
+
+def test_package_exports_public_api():
+    import PyInput
+
+    assert PyInput.get_str is not None
+    assert PyInput.get_num is not None
+    assert PyInput.yes_no is not None
 
 
 def test_get_num_retries_until_integer_is_in_range(monkeypatch, capsys):
@@ -93,6 +110,17 @@ def test_get_num_reads_float(monkeypatch, capsys):
 
     assert read == 12.5
     assert capsys.readouterr().out == ""
+
+
+def test_get_num_rejects_non_finite_float(monkeypatch, capsys):
+    responses = iter(["nan", "inf", "42.5"])
+    monkeypatch.setattr("builtins.input", lambda _: next(responses))
+
+    assert get_num("Price: ", floating=True) == 42.5
+    assert capsys.readouterr().out == (
+        "You didn't insert a valid float. Try again.\n"
+        "You didn't insert a valid float. Try again.\n"
+    )
 
 
 def test_get_num_accepts_inclusive_bounds(monkeypatch):
