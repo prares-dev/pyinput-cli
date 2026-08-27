@@ -1,4 +1,4 @@
-from PyInput.input import get_num, get_str, yes_no
+from pyinput.pyinput import get_num, get_str, yes_no
 
 def test_get_str_strips_str(monkeypatch):
     input = "    an str with leading and trailing whitespaces   "
@@ -83,11 +83,11 @@ def test_get_str_with_name_detects_invalid_chars(monkeypatch, capsys):
 
 
 def test_package_exports_public_api():
-    import PyInput
+    import pyinput
 
-    assert PyInput.get_str is not None
-    assert PyInput.get_num is not None
-    assert PyInput.yes_no is not None
+    assert pyinput.get_str is not None
+    assert pyinput.get_num is not None
+    assert pyinput.yes_no is not None
 
 
 def test_get_num_retries_until_integer_is_in_range(monkeypatch, capsys):
