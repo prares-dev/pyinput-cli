@@ -98,11 +98,7 @@ def get_num(prompt: str = "Number: ", *,
     If floating is True, it accepts floating point numbers, otherwise only integers.
     """
 
-<<<<<<< HEAD
     def is_valid(value: int | float):
-=======
-    def is_valid(value):
->>>>>>> 8e2a191a2b360ecc79a7e5d236c6b559015133e7
         if floating and not math.isfinite(value):
             return ValidationResult(False, f"You didn't insert a valid {'float' if floating else 'integer'}. Try again.")
 
@@ -121,11 +117,7 @@ def get_num(prompt: str = "Number: ", *,
 
 
 # ==================== BOOLEAN LOGIC ====================
-<<<<<<< HEAD
 def yes_no(prompt:str = "Answer"):
-=======
-def yes_no(prompt:str ="Answer"):
->>>>>>> 8e2a191a2b360ecc79a7e5d236c6b559015133e7
     """Asks the user a yes/no question and returns True for yes and False for no."""
 
     def is_valid(value):
